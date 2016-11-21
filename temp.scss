@@ -1,0 +1,389 @@
+//Bootstrap grid
+$enable-flex:               true;
+$enable-grid-classes:       true;
+
+@import './vendor/bootstrap/_variables.scss';
+@import './vendor/bootstrap/_mixins.scss';
+@import './vendor/bootstrap/_normalize.scss';
+@import './vendor/bootstrap/_reboot.scss';
+@import './vendor/bootstrap/_grid.scss';
+
+
+// Colors
+$primary-dark: #1b1d23;
+$secondary-dark: #2d3139;
+$tertiary-dark: #1e2326;
+
+$primary-light: #fff;
+$secondary-light: #51555a;
+$primary-red: #d72a3e;
+$primary-blue: #1cd4ec;
+$primary-green:#65bc47;// #00ef5b;// #1cec96;//#65bc47;//#5fd277; //rgb(95,210,119)
+
+//Shadows
+// $green-text-glow: 0px 0px 9px rgba(95,210,119, 1);
+//Mixins
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}
+//Misc.
+$border-radius: 20px;
+
+// Typography
+@import url('https://fonts.googleapis.com/css?family=Wire+One');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('themify-icons.css');
+$primary-font: 'Montserrat', sans-serif;
+$number-font: 'Wire One', sans-serif;
+
+h1,h2,h3,h4,h5,h6{
+	font-family:$primary-font;
+	color: $primary-light;
+}
+
+h1.page-title{}
+
+
+
+//Body
+body{
+	background: $primary-dark;
+	font-family: $primary-font;
+	color: $secondary-light;
+	font-size: 14px;
+}
+
+
+//Layout
+.app-container{
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	width: 100%;
+	.content-container{
+		width:100%;
+		max-width: 1200px;
+		margin: auto;
+		.content-section{
+			padding: 1rem 3rem;
+		}
+	}
+}
+
+//Links
+a, a:link, a:visited{
+	text-decoration:underline;
+	color: lighten($secondary-light,10%);
+	&:hover{
+		color: lighten($secondary-light,25%);
+ 		// text-shadow: 0 0 10px lighten($secondary-light,15%);
+	}
+}
+
+//Buttons
+.btn{
+	font-family: $primary-font;
+	border-radius: $border-radius;
+	padding: .3rem 1.5rem;
+	color:$primary-light;
+	border:0px;
+	outline: none;
+	background:$secondary-dark;
+ 	box-shadow: 0 0 20px darken($primary-dark, 5%);
+	transition: all 170ms ease-in-out;
+	line-height: 1.1rem;
+	&:hover{
+		background: lighten($secondary-dark, 5%);
+		transition: all 170ms ease-in-out;
+	}
+
+	&.red {
+		background: $primary-red;
+		&:hover{
+			background: lighten($primary-red, 5%);
+			box-shadow: 0 0 20px $primary-red;
+		}
+	}
+	&.green {
+		background: $primary-green;
+		&:hover{
+			background: lighten($primary-green, 5%);
+			box-shadow: 0 0 20px $primary-green;
+		}
+	}
+	&.blue {
+		background: $primary-blue;
+		&:hover{
+			background: lighten($primary-blue, 5%);
+			box-shadow: 0 0 20px $primary-blue;
+		}
+	}
+	&.medium{
+		font-size:1.4rem;
+		line-height: 1.6rem;
+		padding: .6rem 1.6rem;
+		border-radius: 25px;
+	}
+	&.large{
+		font-size: 2rem;
+		line-height: 2.3rem;
+		padding: .8rem 2.2rem;
+		border-radius: 30px;
+	}
+}
+
+
+
+//Forms
+label{
+	color: $primary-light;
+}
+//Radio
+.radio{
+  // color: #AAAAAA;
+  display: block;
+  position: relative;
+  // float: left;
+  width: 100%;
+  // height: 100px;
+}
+
+.radio input[type=radio]{
+  position: absolute;
+  visibility: hidden;
+}
+
+.radio label{
+    display: block;
+    position: relative;
+    padding: 3px 0px 0px 40px;
+    // margin: 10px auto;
+    // height: 30px;
+    z-index: 9;
+    cursor: pointer;
+}
+
+.radio:hover label{
+	color: $primary-light;
+}
+
+.radio .check{
+  display: block;
+  position: absolute;
+  border: 2px solid $primary-red;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  top: 0px;
+  z-index: 5;
+  background: $secondary-dark;
+  transition: all 0.3s ease-in-out;
+}
+
+.radio:hover .check {
+  border: 2px solid light($primary-red,15%);
+}
+
+.radio .check::before {
+  display: block;
+  position: absolute;
+  content: '';
+  border-radius: 100%;
+  height: 15px;
+  width: 15px;
+  top: 3px;
+  left: 3px;
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type=radio]:checked ~ .check {
+  border: 2px solid $primary-red;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: $primary-red;
+}
+.switch {
+	display: block;
+	position: relative;
+	input[type=checkbox]{
+		  position: absolute;
+		  margin-left: -9999px;
+		  visibility: hidden;
+	}
+	span {
+		display: block;
+		position: absolute;
+		cursor: pointer;
+		outline: none;
+		user-select: none;
+		padding: 2px;
+		width: 50px;
+		height: 24px;
+		background-color: $secondary-light;
+		border-radius: 60px;
+		transition: background 0.4s;
+		&:before,&:after{
+			display: block;
+			position: absolute;
+			content: "";
+		}
+		&:before {
+			top: 0px;
+			left: 2px;
+			bottom: 0px;
+			right: -2px;
+			background-color: $secondary-dark;
+			border-radius: 30px;
+			transition: background 0.3s;
+		}
+		&:after{
+			top: 4px;
+			left: 4px;
+			bottom: 4px;
+			width: 16px;
+			background-color: $secondary-light;
+			border-radius: 30px;
+			transition: margin 0.4s, background 0.4s;
+		}
+	}
+	input[type=checkbox]:checked + span {
+		background-color: $primary-red;
+		transition: background 0.4s;
+		&:before{
+			left: -2px;
+			right: 2px;
+		}
+	}
+	input[type=checkbox]:checked + span:after {
+		margin-left: 25px;
+		background-color: $primary-red;
+		transition: margin 0.4s, background 0.4s;
+	}
+	label{
+		display: block;
+		position: relative;
+		padding: 3px 0px 0px 65px;
+		z-index: 9;
+		cursor: pointer;
+	}
+}
+
+//Inputs
+ .input {
+ 	background: $secondary-dark;
+ 	font-family: $primary-font;
+ 	color: $primary-light;
+ 	border: 0;
+ 	box-shadow: 0 0 20px darken($primary-dark, 5%);
+ 	padding: .4rem 1.4rem;
+ 	border-radius: $border-radius;
+	outline: none;
+	transition: all 170ms ease-in-out;
+	text-align: center;
+	@include placeholder {
+    	color: lighten($secondary-light, 15%);
+ 		font-family: $primary-font;
+    }
+    &:focus{
+ 		background: lighten($secondary-dark, 5%);
+    }
+ }
+
+ .form-group{
+ 	margin-bottom: 1rem;
+ 	label{
+	    display: block;
+    	margin-bottom: .5rem;
+ 	}
+ }
+
+//Utilities
+.block{
+	display: block;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+
+//Components
+
+	// Counter
+	.counter{
+		display: inline-flex;
+		flex-flow: row;
+		.icon{
+			border-radius: 1.5rem;
+			// background: #d72a3e;
+		    width: 3rem;
+		    line-height: 3rem;
+		    text-align: center;
+		    font-weight: bold;
+		    height: 3rem;
+		    color: #fff;
+		    font-size: 1.2rem;
+			&.red {
+				background: $primary-red;
+				&:hover{
+					background: lighten($primary-red, 5%);
+					box-shadow: 0 0 20px $primary-red;
+				}
+			}
+			&.blue {
+				background: $primary-blue;
+				&:hover{
+					background: lighten($primary-blue, 5%);
+					box-shadow: 0 0 20px $primary-blue;
+				}
+			}
+		}
+
+		.count{
+		    padding-left: 1rem;
+		    color: $primary-light;
+		    font-size: 2rem;
+		    position: relative;
+		    padding-left: 1rem;
+		    color: #fff;
+		    font-size: 2rem;
+		    position: relative;
+		    margin-top: -0.5rem;
+			.units{
+	 			font-size: .8rem;
+	 			position: absolute;
+	 			top:0px;
+	 			right:0px;
+			}
+			.qualifier{
+				font-size: 1rem;
+				color: $secondary-light;
+				line-height: .1rem;
+			}
+		}
+		
+	}
+	// Separator
+	.separator { 
+	    margin: 1rem 0;
+	    height: 1px;
+	    background: $primary-red;
+	    box-shadow: 0 0 15px 0px $primary-red;
+		background: linear-gradient(to right, rgba(27,29,35,0) 0%, $primary-red 50%, rgba(27,29,35,0) 100%);
+	}
+
+//Animations
+// @keyframes neon4 {
+//   from {
+//     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
+//   }
+//   to {
+//     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
+//   }
+// }
